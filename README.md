@@ -1,3 +1,12 @@
+# Instructions
+
+In order to view the results of Jasmine tests on this app, launch index.html in your browser. Jasmine will output the results of all tests at the bottom of the page, below the feed content. All tests are described in spec/feedreader.js.
+
+# Added Test
+
+Line 56:feedreader.js adds a new test to ensure that the url for each feed in
+allFeeds is a valid url inasmuch as the url begins with 'http://'
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.

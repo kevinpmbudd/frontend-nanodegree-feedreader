@@ -43,13 +43,22 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-
          it('defined a non-empty name for each feed', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
             });
         });
+
+        /* Test whether each url in allFeeds begins with http:// to
+         * ensure it is a valid url.
+         */
+         it('contains a valid url for each feed', function() {
+            allFeeds.forEach(function(feed) {
+                expect((feed.url).slice(0,7)).toBe('http://');
+            });
+         });
+
     });
 
 
