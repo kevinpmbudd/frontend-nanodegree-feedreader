@@ -23,8 +23,6 @@ var allFeeds = [
     }
 ];
 
-// var allFeeds = [];
-
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
@@ -124,6 +122,7 @@ $(function() {
 
         $('body').addClass('menu-hidden');
         loadFeed(item.data('id'));
+        console.log(item.data('id'));
         return false;
     });
 

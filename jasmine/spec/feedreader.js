@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-        it('has defined a non-empty URL for each feed', function() {
+        it('defined a non-empty URL for each feed', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
@@ -44,7 +44,7 @@ $(function() {
          * and that the name is not empty.
          */
 
-         it('has defined a non-empty name for each feed', function() {
+         it('defined a non-empty name for each feed', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
@@ -62,7 +62,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('should be hidden by default', function() {
-            expect($('body').hasClass('menu-hidden')).toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -81,9 +81,8 @@ $(function() {
     });
 
 
-
     /* TODO: Write a new test suite named "Initial Entries" */
-    // describe('Initial Entries', function() {
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -91,20 +90,35 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        // beforeEach(function( done ) {
+        beforeEach(function( done ) {
+            loadFeed(0, done);
+        });
 
-        // });
+        it('contains at least one .entry element within .feed container', function() {
+            expect($('.feed .entry').length).toBeGreaterThan(0);
+        });
+    });
 
-        // it('contains at least one .entry element within .feed container', function( done ) {
-
-        // });
-
-    /* TODO: Write a new test suite named "New Feed Selection"
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         var feedContentBefore,
+             feedContentAfter;
 
-    // });
+         feedContentBefore = $('.feed').text();
+
+         beforeEach(function( done ) {
+            loadFeed(1, done);
+         });
+
+         it('changes the content when a new feed is loaded', function() {
+            feedContentAfter = $('.feed').text();
+            expect(feedContentBefore).not.toBe(feedContentAfter);
+         });
+    });
+
 }());
