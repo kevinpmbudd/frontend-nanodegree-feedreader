@@ -115,27 +115,22 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         var $feedContentBefore,
-             $feedContentAfter;
+         var $feedContentBefore;
+         var $feedContentAfter;
 
          beforeEach(function( done ) {
             loadFeed(1, function() {
                 $feedContentBefore = $('.feed').html();
                 done();
             });
+         });
 
+         it('changes the content when a new feed is loaded', function( done ) {
             loadFeed(2, function() {
                 $feedContentAfter = $('.feed').html();
+                expect($feedContentBefore).not.toEqual($feedContentAfter);
+                done();
             });
          });
-
-         it('changes the content when a new feed is loaded', function() {
-
-            expect($feedContentBefore).not.toEqual($feedContentAfter);
-
-            console.log($feedContentBefore);
-            console.log($feedContentAfter);
-         });
     });
-
 }());
